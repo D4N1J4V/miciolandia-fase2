@@ -1,0 +1,6 @@
+{
+  "crons": [
+    { "path": "/api/cron/scadenze", "schedule": "0 6 * * *" },
+    { "path": "/api/cron/accrediti", "schedule": "0 5 1 * *" }
+  ]
+}

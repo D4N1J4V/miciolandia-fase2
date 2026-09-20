@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Miciolandia — pensione per soli gatti a Bergamo</title>
+<meta name="description" content="Pensione felina a Bergamo e provincia: zona comune interna ed esterna, cura a domicilio, trasporto. Prezzi pubblici, posto garantito per i soci.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cacao:#241A12; --cacao-2:#3A291B;
+  --miele:#F7BE4F; --miele-chiaro:#FDE9BF;
+  --crema:#FFFBF2; --bosco:#2E6B52; --ruggine:#A8492F;
+  --testo:#241A12; --tenue:#6B5A48; --bordo:rgba(36,26,18,.14);
+  --raggio:18px;
+}
+:root:not([data-theme="light"]){
+  @media (prefers-color-scheme: dark){
+    --crema:#17110C; --cacao:#F3E7D5; --cacao-2:#E2D2BA;
+    --testo:#F3E7D5; --tenue:#B6A48C; --bordo:rgba(243,231,213,.18);
+    --miele-chiaro:#3A2C17;
+  }
+}
+:root[data-theme="dark"]{
+  --crema:#17110C; --cacao:#F3E7D5; --cacao-2:#E2D2BA;
+  --testo:#F3E7D5; --tenue:#B6A48C; --bordo:rgba(243,231,213,.18);
+  --miele-chiaro:#3A2C17;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--crema);color:var(--testo);
+  font-family:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+h1,h2,h3{font-family:"Bricolage Grotesque",Georgia,sans-serif;font-weight:800;
+  line-height:1.02;letter-spacing:-.025em;margin:0}
+h1{font-size:clamp(2.4rem,7vw,4.4rem)}
+h2{font-size:clamp(1.8rem,3.9vw,2.8rem)}
+h3{font-size:1.2rem;font-weight:600;letter-spacing:-.015em;line-height:1.2}
+p{margin:0 0 1em}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+.stretta{max-width:64ch}
+section{padding:70px 0}
+:focus-visible{outline:3px solid var(--bosco);outline-offset:3px;border-radius:4px}
+.nota{font-size:.84rem;color:var(--tenue)}
+
+/* ---- viste ---- */
+.vista{display:none}
+.vista.attiva{display:block}
+
+/* ---- barra ---- */
+.barra{position:sticky;top:0;z-index:60;background:var(--crema);border-bottom:1px solid var(--bordo)}
+.barra-in{max-width:1080px;margin:0 auto;padding:12px 22px;display:flex;align-items:center;gap:14px}
+.logo{display:flex;align-items:center;gap:9px;font-family:"Bricolage Grotesque";
+  font-weight:800;font-size:1.28rem;letter-spacing:-.03em;text-decoration:none;
+  background:none;border:0;color:inherit;cursor:pointer;padding:0}
+.logo svg{width:26px;height:26px;flex:none}
+.barra-cta{margin-left:auto;display:flex;gap:9px}
+@media(max-width:760px){.barra-cta{display:none}}
+
+/* ---- passi ---- */
+.passi-flusso{margin-left:auto;display:flex;align-items:center;gap:10px;font-size:.84rem;color:var(--tenue)}
+.passi-flusso b{font-weight:600;color:var(--testo)}
+.pallini{display:flex;gap:5px}
+.pallini i{width:7px;height:7px;border-radius:50%;background:var(--bordo);display:block}
+.pallini i.on{background:var(--miele)}
+@media(max-width:520px){.passi-flusso span{display:none}}
+
+/* ---- bottoni ---- */
+.btn{font:inherit;font-weight:600;font-size:.97rem;border-radius:999px;padding:12px 22px;
+  cursor:pointer;text-decoration:none;display:inline-block;text-align:center;
+  border:2px solid var(--cacao);background:var(--cacao);color:var(--crema);transition:transform .12s ease}
+.btn:active{transform:translateY(1px)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn-miele{background:var(--miele);border-color:var(--miele);color:#241A12}
+.btn-vuoto{background:transparent;color:var(--testo)}
+.btn-grande{font-size:1.05rem;padding:16px 26px;width:100%}
+.indietro{background:none;border:0;font:inherit;color:var(--tenue);cursor:pointer;
+  padding:6px 0;font-size:.93rem;font-weight:500}
+.indietro:hover{color:var(--testo)}
+
+/* ---- hero ---- */
+.hero{padding:52px 0 20px}
+.occhiello{display:inline-flex;align-items:center;gap:8px;font-size:.86rem;font-weight:600;
+  color:var(--bosco);background:color-mix(in srgb,var(--bosco) 12%,transparent);
+  padding:6px 14px;border-radius:999px;margin-bottom:22px}
+.occhiello svg{flex:none}
+.testata{display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:end}
+.hero p.guida{font-size:1.14rem;color:var(--tenue);margin:0}
+@media(max-width:900px){.testata{grid-template-columns:1fr;gap:16px;align-items:start}}
+@media(max-width:700px){
+  .hero{padding:32px 0 16px}
+  .occhiello{margin-bottom:16px;font-size:.8rem;padding:5px 12px}
+  .hero p.guida{font-size:1.02rem}
+  .porte{margin-top:26px}
+}
+
+/* ---- le due porte ---- */
+.porte{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:38px}
+@media(max-width:780px){.porte{grid-template-columns:1fr}}
+.porta{border-radius:var(--raggio);padding:26px 24px 24px;display:flex;flex-direction:column}
+.porta-scura{background:var(--cacao);color:#FFF8EA}
+.porta-chiara{background:var(--miele);color:#241A12}
+.porta .tetto{font-size:.85rem;font-weight:600;opacity:.75;margin-bottom:10px}
+.porta h2{font-size:clamp(1.5rem,3.1vw,2rem);margin-bottom:10px}
+.porta .dett{font-size:.98rem;margin:0 0 18px;opacity:.9}
+.porta ul{list-style:none;margin:0 0 22px;padding:0;font-size:.95rem}
+.porta li{padding-left:22px;position:relative;margin-bottom:7px}
+.porta li::before{content:"";position:absolute;left:0;top:.52em;width:9px;height:9px;
+  border-radius:50%;background:currentColor;opacity:.55}
+.porta .prezzo{font-family:"Bricolage Grotesque";font-weight:800;font-size:1.65rem;
+  letter-spacing:-.02em;margin-bottom:4px}
+.porta .prezzo span{font-family:"Instrument Sans";font-size:.88rem;font-weight:500;opacity:.8}
+.porta .fondo{margin-top:auto}
+.porta-scura .btn{background:var(--miele);border-color:var(--miele);color:#241A12}
+.porta-chiara .btn{background:var(--cacao);border-color:var(--cacao);color:#FFF8EA}
+.porta .sotto{font-size:.82rem;opacity:.75;margin:10px 0 0;text-align:center}
+.porta .micro{font-size:.82rem;opacity:.75;margin:0 0 16px}
+
+/* ---- striscia ---- */
+.fiducia{background:var(--cacao);color:#FFF8EA;padding:26px 0;margin-top:54px}
+.fiducia-in{display:grid;grid-template-columns:repeat(5,auto);gap:14px 26px;
+  justify-content:center;font-size:.93rem;font-weight:500}
+.fiducia-in span{display:flex;align-items:center;gap:8px}
+.fiducia-in svg{width:18px;height:18px;color:var(--miele);flex:none}
+@media(max-width:880px){.fiducia-in{grid-template-columns:repeat(2,auto);justify-content:start}}
+@media(max-width:420px){.fiducia-in{grid-template-columns:1fr}}
+
+/* ---- confronto ---- */
+.confronto{width:100%;border-collapse:collapse;margin-top:26px;font-size:.97rem}
+.confronto th,.confronto td{padding:14px 12px;border-bottom:1px solid var(--bordo);text-align:left}
+.confronto th{font-size:.84rem;color:var(--tenue);font-weight:600}
+.confronto td.c,.confronto th.c{text-align:center;width:92px}
+.confronto tbody tr:last-child td{border-bottom:0}
+.si{color:var(--bosco);font-weight:700}
+.forse{color:var(--tenue);font-weight:500}
+.no{color:var(--tenue);opacity:.55}
+.col-noi{background:color-mix(in srgb,var(--miele) 24%,transparent)}
+
+/* ---- passi come funziona ---- */
+.tappe{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px;counter-reset:t}
+@media(max-width:780px){.tappe{grid-template-columns:1fr}}
+.tappa{border-left:3px solid var(--miele);padding:4px 0 4px 18px;counter-increment:t}
+.tappa h3{margin-bottom:6px}
+.tappa h3::before{content:counter(t) ". ";color:var(--tenue);font-weight:600}
+.tappa p{font-size:.95rem;color:var(--tenue);margin:0}
+
+/* ---- listino ---- */
+.listino{background:var(--miele-chiaro);border-radius:var(--raggio);padding:28px 26px;margin-top:26px}
+.listino table{width:100%;border-collapse:collapse}
+.listino td,.listino th{padding:12px 8px;border-bottom:1px solid rgba(36,26,18,.16);text-align:left}
+.listino th{font-size:.84rem;color:var(--tenue);font-weight:600}
+.listino td.n,.listino th.n{text-align:right;font-variant-numeric:tabular-nums}
+.listino tr:last-child td{border-bottom:0}
+
+/* ---- domande ---- */
+details{border-bottom:1px solid var(--bordo);padding:16px 0}
+details summary{cursor:pointer;font-weight:600;font-size:1.03rem;list-style:none;
+  display:flex;align-items:flex-start;gap:12px}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:"+";margin-left:auto;font-size:1.3rem;line-height:1;color:var(--tenue);flex:none}
+details[open] summary::after{content:"–"}
+details p{margin:12px 0 0;color:var(--tenue);font-size:.97rem;max-width:66ch}
+
+/* ---- schermata piani ---- */
+.intestazione-passo{padding:44px 0 0}
+.stima{background:var(--miele-chiaro);border-radius:var(--raggio);padding:20px 22px;margin:26px 0 30px}
+.stima .dom{font-weight:600;margin:0 0 12px;font-size:1rem}
+.bande{display:flex;gap:8px;flex-wrap:wrap}
+.bande button{font:inherit;font-size:.93rem;font-weight:600;padding:9px 16px;border-radius:999px;
+  border:2px solid rgba(36,26,18,.2);background:transparent;color:var(--testo);cursor:pointer}
+.bande button[aria-pressed="true"]{background:var(--cacao);border-color:var(--cacao);color:#FFF8EA}
+.consiglio{margin:14px 0 0;font-size:.95rem;color:var(--testo)}
+
+.piani{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px}
+@media(max-width:860px){.piani{grid-template-columns:1fr}}
+.piano{position:relative;text-align:left;font:inherit;color:inherit;cursor:pointer;
+  background:var(--crema);border:2px solid var(--bordo);border-radius:var(--raggio);
+  padding:24px 22px;display:flex;flex-direction:column;transition:border-color .12s ease}
+.piano:hover{border-color:rgba(36,26,18,.34)}
+.piano[aria-pressed="true"]{border-color:var(--cacao);background:var(--miele-chiaro)}
+.piano .etichetta{position:absolute;top:-11px;left:20px;background:var(--bosco);color:#fff;
+  font-size:.74rem;font-weight:600;padding:3px 10px;border-radius:999px}
+.piano h3{font-size:1.28rem;font-family:"Bricolage Grotesque";font-weight:800;letter-spacing:-.02em}
+.piano .quota{font-family:"Bricolage Grotesque";font-weight:800;font-size:2.4rem;
+  letter-spacing:-.03em;line-height:1;margin:12px 0 2px}
+.piano .quota span{font-family:"Instrument Sans";font-size:.85rem;font-weight:500;color:var(--tenue)}
+.piano .anno{font-size:.85rem;color:var(--tenue);margin:0 0 16px}
+.piano ul{list-style:none;padding:0;margin:0 0 18px;font-size:.94rem}
+.piano li{padding-left:22px;position:relative;margin-bottom:7px}
+.piano li svg{position:absolute;left:0;top:.28em;width:14px;height:14px;color:var(--bosco)}
+.piano .segno{margin-top:auto;font-size:.9rem;font-weight:600;color:var(--tenue)}
+.piano[aria-pressed="true"] .segno{color:var(--bosco)}
+
+.riga-avanti{display:flex;align-items:center;gap:16px;margin-top:30px;flex-wrap:wrap}
+.riga-avanti .btn{min-width:260px}
+.onesta{border-left:3px solid var(--ruggine);padding:2px 0 2px 16px;margin-top:34px;
+  font-size:.95rem;color:var(--tenue);max-width:62ch}
+
+/* ---- modulo ---- */
+.modulo-sez{background:var(--cacao);color:#FFF8EA;min-height:100%}
+.modulo-sez h2,.modulo-sez h3{color:#FFF8EA}
+.modulo-sez .guida{color:rgba(255,248,234,.72);max-width:52ch}
+.modulo-sez .indietro{color:rgba(255,248,234,.65)}
+.riepilogo{border:1px solid rgba(255,248,234,.25);border-radius:14px;padding:16px 18px;
+  margin:24px 0 26px;display:flex;justify-content:space-between;gap:14px;align-items:center;max-width:680px}
+.riepilogo .voce{font-size:.85rem;color:rgba(255,248,234,.62)}
+.riepilogo .val{font-weight:600;font-size:1.02rem}
+.riepilogo button{background:none;border:0;color:var(--miele);font:inherit;font-size:.9rem;
+  font-weight:600;cursor:pointer;text-decoration:underline;padding:0}
+.modulo{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:680px}
+@media(max-width:640px){.modulo{grid-template-columns:1fr}}
+.campo{display:flex;flex-direction:column;gap:6px}
+.campo.pieno{grid-column:1/-1}
+.campo label{font-size:.87rem;font-weight:600;color:rgba(255,248,234,.8)}
+.campo input,.campo select{font:inherit;padding:13px 14px;border-radius:12px;
+  border:1px solid rgba(255,248,234,.28);background:rgba(255,248,234,.07);color:#FFF8EA}
+.campo input::placeholder{color:rgba(255,248,234,.4)}
+.campo select option{color:#241A12}
+.privacy{grid-column:1/-1;font-size:.84rem;color:rgba(255,248,234,.6);display:flex;gap:10px;align-items:flex-start}
+.privacy input{margin-top:3px;accent-color:var(--miele)}
+.modulo .btn{grid-column:1/-1;background:var(--miele);border-color:var(--miele);color:#241A12}
+.errore{grid-column:1/-1;color:#FFD4C4;font-size:.9rem;display:none}
+.errore.visibile{display:block}
+
+/* ---- conferma ---- */
+.conferma{padding:70px 0 90px;text-align:left}
+.bollo{width:62px;height:62px;border-radius:50%;background:var(--miele);
+  display:flex;align-items:center;justify-content:center;margin-bottom:24px}
+.bollo svg{width:30px;height:30px;color:#241A12}
+.conferma h2{max-width:18ch}
+.conferma p{color:var(--tenue);max-width:56ch;margin-top:16px;font-size:1.06rem}
+.prossimo{border:1px solid var(--bordo);border-radius:var(--raggio);padding:22px 24px;
+  margin-top:32px;max-width:560px}
+.prossimo h3{font-size:1rem;margin-bottom:10px}
+.prossimo ol{margin:0;padding-left:20px;color:var(--tenue);font-size:.96rem}
+.prossimo li{margin-bottom:7px}
+
+/* ---- barra mobile ---- */
+.mobile-cta{position:fixed;left:0;right:0;bottom:0;z-index:70;display:none;gap:8px;
+  padding:10px 12px calc(10px + env(safe-area-inset-bottom));
+  background:var(--crema);border-top:1px solid var(--bordo)}
+.mobile-cta .btn{flex:1;padding:14px 8px;font-size:.92rem}
+@media(max-width:760px){
+  body.landing .mobile-cta{display:flex}
+  body.landing{padding-bottom:78px}
+}
+
+footer{padding:40px 0 48px;border-top:1px solid var(--bordo);color:var(--tenue);font-size:.88rem}
+.zampe{display:flex;gap:8px;opacity:.28;margin-bottom:14px}
+.zampe svg{width:20px;height:20px}
+</style>
+</head>
+<body class="landing">
+
+<svg style="display:none" aria-hidden="true">
+  <symbol id="gatto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 10.5V5l3.6 2.6a8.6 8.6 0 0 1 8.8 0L20 5v5.5a8 8 0 1 1-16 0Z"/>
+    <path d="M9.2 12h.01M14.8 12h.01M12 15.2v1.4"/>
+  </symbol>
+  <symbol id="zampa" viewBox="0 0 24 24" fill="currentColor">
+    <ellipse cx="7" cy="8" rx="2.1" ry="2.7"/><ellipse cx="12" cy="6.3" rx="2.1" ry="2.8"/>
+    <ellipse cx="17" cy="8" rx="2.1" ry="2.7"/><ellipse cx="20" cy="12.6" rx="1.8" ry="2.3"/>
+    <path d="M12 11.2c3.1 0 5.6 2.4 5.6 4.9 0 2-1.7 3.2-3.6 3.2-1 0-1.4-.4-2-.4s-1 .4-2 .4c-1.9 0-3.6-1.2-3.6-3.2 0-2.5 2.5-4.9 5.6-4.9Z"/>
+  </symbol>
+  <symbol id="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20 6 9 17l-5-5"/>
+  </symbol>
+</svg>
+
+<header class="barra">
+  <div class="barra-in">
+    <button class="logo" id="home" aria-label="Torna all’inizio">
+      <svg><use href="#gatto"/></svg> Miciolandia
+    </button>
+    <div class="barra-cta" id="barra-cta">
+      <button class="btn btn-vuoto" data-vai="notte">Prenota una notte</button>
+      <button class="btn" data-vai="abbonamento">Abbonati</button>
+    </div>
+    <div class="passi-flusso" id="passi-flusso" hidden>
+      <span id="passo-testo"></span>
+      <span class="pallini" aria-hidden="true">
+        <i id="p1"></i><i id="p2"></i><i id="p3"></i>
+      </span>
+    </div>
+  </div>
+</header>
+
+<!-- ======================= VISTA 1 · LANDING ======================= -->
+<main class="vista attiva" id="vista-landing">
+
+  <div class="wrap">
+    <section class="hero">
+      <span class="occhiello"><svg width="16" height="16"><use href="#zampa"/></svg> Apriamo a Bergamo — posti fondatori aperti</span>
+      <div class="testata">
+        <h1>Il tuo gatto<br>non va in gabbia.</h1>
+        <p class="guida">Pensione per soli gatti a Bergamo e provincia: zona comune interna ed
+          esterna, cuccia riservata per chi la preferisce, e se il trasportino è un dramma
+          veniamo noi da te. I prezzi sono qui sotto, non dopo una telefonata.</p>
+      </div>
+
+      <div class="porte">
+        <div class="porta porta-scura">
+          <div class="tetto">Se parti spesso</div>
+          <h2>Abbonati e blocca il posto</h2>
+          <p class="dett">Ogni mese accumuli notti sulla tessera e le usi quando vuoi.
+            Ad agosto il posto ce l’hai già.</p>
+          <ul>
+            <li>Posto garantito entro 48 ore, tutto l’anno</li>
+            <li>Le notti si accumulano e valgono 12 mesi</li>
+            <li>Foto e aggiornamenti ogni giorno, inclusi</li>
+            <li>Disdetta libera dopo tre mesi</li>
+          </ul>
+          <div class="fondo">
+            <div class="prezzo">da 19 € <span>al mese</span></div>
+            <p class="micro">Tariffa fondatori bloccata per due anni</p>
+            <button class="btn btn-grande" data-vai="abbonamento">Scegli il tuo piano</button>
+            <p class="sotto">Nessun pagamento adesso</p>
+          </div>
+        </div>
+
+        <div class="porta porta-chiara">
+          <div class="tetto">Se parti una volta ogni tanto</div>
+          <h2>Prenota una notte</h2>
+          <p class="dett">Nessuna iscrizione, nessun vincolo. Scegli le date,
+            sai già quanto costa, e paghi solo quelle notti.</p>
+          <ul>
+            <li>Prezzo di listino pubblico, senza preventivi</li>
+            <li>Disdetta gratuita fino a 72 ore prima</li>
+            <li>Trasporto da casa tua su richiesta</li>
+            <li>Vieni a vedere la struttura prima di decidere</li>
+          </ul>
+          <div class="fondo">
+            <div class="prezzo">da 20 € <span>a notte</span></div>
+            <p class="micro">Secondo gatto della stessa famiglia −30%</p>
+            <button class="btn btn-grande" data-vai="notte">Chiedi le tue date</button>
+            <p class="sotto">Ti rispondiamo entro 24 ore</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="fiducia">
+    <div class="wrap fiducia-in">
+      <span><svg><use href="#check"/></svg> Solo gatti, nessun cane</span>
+      <span><svg><use href="#check"/></svg> Zona comune interna ed esterna</span>
+      <span><svg><use href="#check"/></svg> Cura a domicilio</span>
+      <span><svg><use href="#check"/></svg> Trasporto dedicato</span>
+      <span><svg><use href="#check"/></svg> Prezzi pubblici</span>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <h2>Quello che manca alle altre</h2>
+      <p class="guida stretta" style="color:var(--tenue);margin-top:14px">
+        A Bergamo qualche pensione felina c’è, e alcune sono fatte bene. Ma ognuna copre
+        un pezzo: chi ha la zona esterna non fa il trasporto, chi viene a casa non ha
+        la struttura. Nessuna mette tutto insieme.</p>
+      <table class="confronto">
+        <thead><tr><th>Cosa puoi avere</th><th class="c">In giro a Bergamo</th><th class="c col-noi">Miciolandia</th></tr></thead>
+        <tbody>
+          <tr><td>Spazio comune interno ed esterno</td><td class="c"><span class="forse">a volte</span></td><td class="c col-noi si">sì</td></tr>
+          <tr><td>Cuccia riservata per i gatti poco socievoli</td><td class="c"><span class="forse">a volte</span></td><td class="c col-noi si">sì</td></tr>
+          <tr><td>Cura del gatto a casa tua</td><td class="c"><span class="no">raro</span></td><td class="c col-noi si">sì</td></tr>
+          <tr><td>Trasporto da e verso casa</td><td class="c"><span class="no">raro</span></td><td class="c col-noi si">sì</td></tr>
+          <tr><td>Abbonamento con posto garantito</td><td class="c"><span class="no">nessuna</span></td><td class="c col-noi si">sì</td></tr>
+          <tr><td>Prezzi pubblicati sul sito</td><td class="c"><span class="no">nessuna</span></td><td class="c col-noi si">sì</td></tr>
+        </tbody>
+      </table>
+      <p class="nota" style="margin-top:16px">Confronto basato su quanto pubblicato dalle quattro
+        strutture feline della provincia a settembre 2026.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <h2>Come funziona</h2>
+      <div class="tappe">
+        <div class="tappa">
+          <h3>Ci dici chi è il tuo gatto</h3>
+          <p>Carattere, abitudini, cosa mangia, se prende farmaci. Lo compili una volta sola
+            e resta salvato: alla seconda prenotazione non ti chiediamo più niente.</p>
+        </div>
+        <div class="tappa">
+          <h3>Lo porti tu o veniamo noi</h3>
+          <p>Vieni a vedere la struttura quando vuoi, anche prima di prenotare. Se il
+            trasportino in auto è un problema, lo veniamo a prendere.</p>
+        </div>
+        <div class="tappa">
+          <h3>Ricevi sue notizie ogni giorno</h3>
+          <p>Foto, peso, quanto ha mangiato, cosa ha combinato. Non devi chiedere:
+            arrivano da sole, tutti i giorni del soggiorno.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <h2>Quanto costa una notte</h2>
+      <p class="guida stretta" style="color:var(--tenue);margin-top:14px">
+        Le notti costano di più quando tutti cercano posto e di meno quando i box sono liberi.
+        È lo stesso criterio per tutti, scritto qui.</p>
+      <div class="listino">
+        <table>
+          <thead><tr><th>Periodo</th><th>Quando</th><th class="n">A notte</th></tr></thead>
+          <tbody>
+            <tr><td>Bassa stagione</td><td>Notti dal lunedì al giovedì</td><td class="n">20 €</td></tr>
+            <tr><td>Weekend e ponti</td><td>Venerdì, sabato, domenica e festivi</td><td class="n">30 €</td></tr>
+            <tr><td>Alta stagione</td><td>Agosto, Natale, Pasqua</td><td class="n">40 €</td></tr>
+            <tr><td>Secondo gatto</td><td>Stessa famiglia, stesso spazio</td><td class="n">−30%</td></tr>
+            <tr><td>Cura a domicilio</td><td>Una visita al giorno a casa tua</td><td class="n">18 €</td></tr>
+            <tr><td>Trasporto</td><td>Andata e ritorno entro 20 km</td><td class="n">15 €</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="riga-avanti">
+        <button class="btn" data-vai="abbonamento">Vedi i tre abbonamenti</button>
+        <span class="nota">Da 19 € al mese, con le notti che si accumulano</span>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap stretta">
+      <h2>Le domande che ci fanno tutti</h2>
+      <div style="margin-top:20px">
+        <details>
+          <summary>Posso vedere dove dorme il mio gatto prima di lasciarlo?</summary>
+          <p>Sì, ed è la cosa che consigliamo a tutti. Le visite si prenotano in due minuti
+            e non c’è nessun impegno: molti passano, guardano e decidono settimane dopo.</p>
+        </details>
+        <details>
+          <summary>Il mio gatto non sopporta gli altri gatti.</summary>
+          <p>Allora sta nel suo spazio riservato e non incontra nessuno. La zona comune è per
+            chi la gradisce, e prima di inserire un gatto facciamo una prova di compatibilità:
+            se non funziona, si torna nello spazio individuale.</p>
+        </details>
+        <details>
+          <summary>Non voglio spostarlo di casa.</summary>
+          <p>Veniamo noi. Una visita al giorno a casa tua: cibo, acqua, lettiera, farmaci se
+            servono, e le stesse foto che riceveresti se fosse da noi.</p>
+        </details>
+        <details>
+          <summary>L’abbonamento conviene davvero o è solo un vincolo?</summary>
+          <p>Conviene se prenoti almeno dieci notti l’anno; sotto quella soglia costa più di
+            quanto fa risparmiare, e te lo diciamo prima. Il vincolo è di tre mesi, poi
+            disdici quando vuoi e le notti già accumulate restano tue.</p>
+        </details>
+        <details>
+          <summary>Prende delle medicine, ve ne occupate voi?</summary>
+          <p>Le pastiglie e le somministrazioni orali sono incluse. Per terapie iniettive o
+            situazioni delicate ne parliamo prima, e se non siamo la struttura giusta te lo diciamo.</p>
+        </details>
+        <details>
+          <summary>Quanto siete lontani?</summary>
+          <p>Siamo in provincia di Bergamo e copriamo un raggio di venti chilometri con
+            trasporto e visite a domicilio. Se abiti più lontano scrivici lo stesso: stiamo
+            decidendo dove aprire in base a da dove arrivano le richieste.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="zampe" aria-hidden="true">
+        <svg><use href="#zampa"/></svg><svg><use href="#zampa"/></svg><svg><use href="#zampa"/></svg>
+      </div>
+      Miciolandia · Bergamo e provincia · In fase di apertura.
+      Prezzi e servizi sono quelli previsti all’apertura e possono cambiare fino all’avvio.
+    </div>
+  </footer>
+</main>
+
+<!-- ======================= VISTA 2 · PIANI ======================= -->
+<main class="vista" id="vista-piani">
+  <div class="wrap">
+    <div class="intestazione-passo">
+      <button class="indietro" data-torna>Torna indietro</button>
+      <h2 style="margin-top:10px">Scegli il tuo piano</h2>
+      <p class="guida stretta" style="color:var(--tenue);margin-top:14px">
+        Ogni mese ricevi delle notti-credito sulla tessera. Una notte feriale ne vale 1,
+        un weekend 1,5, l’alta stagione 2. Si accumulano senza tetto e valgono dodici mesi.</p>
+    </div>
+
+    <div class="stima">
+      <p class="dom">Quante notti pensi di fare in un anno?</p>
+      <div class="bande" role="group" aria-label="Notti previste all’anno">
+        <button type="button" data-banda="0-4" aria-pressed="false">Meno di 5</button>
+        <button type="button" data-banda="5-10" aria-pressed="false">Tra 5 e 10</button>
+        <button type="button" data-banda="11-25" aria-pressed="true">Tra 11 e 25</button>
+        <button type="button" data-banda="25+" aria-pressed="false">Più di 25</button>
+      </div>
+      <p class="consiglio" id="consiglio"></p>
+    </div>
+
+    <div class="piani" id="piani">
+      <button type="button" class="piano" data-piano="base" aria-pressed="false">
+        <h3>Base</h3>
+        <div class="quota">19 € <span>al mese</span></div>
+        <p class="anno">228 € l’anno · 12 notti-credito</p>
+        <ul>
+          <li><svg><use href="#check"/></svg> Posto garantito entro 48 ore</li>
+          <li><svg><use href="#check"/></svg> 1 notte-credito al mese</li>
+          <li><svg><use href="#check"/></svg> Notti extra a 18 € invece di 20 €</li>
+        </ul>
+        <span class="segno">Copre circa 12 notti feriali</span>
+      </button>
+
+      <button type="button" class="piano" data-piano="plus" aria-pressed="true">
+        <span class="etichetta">Il più scelto</span>
+        <h3>Plus</h3>
+        <div class="quota">39 € <span>al mese</span></div>
+        <p class="anno">468 € l’anno · 36 notti-credito</p>
+        <ul>
+          <li><svg><use href="#check"/></svg> 3 notti-credito al mese</li>
+          <li><svg><use href="#check"/></svg> Foto giornaliere e spazzolatura incluse</li>
+          <li><svg><use href="#check"/></svg> Notti extra a 17 €</li>
+        </ul>
+        <span class="segno">Copre una settimana d’agosto più due weekend</span>
+      </button>
+
+      <button type="button" class="piano" data-piano="premium" aria-pressed="false">
+        <h3>Premium</h3>
+        <div class="quota">69 € <span>al mese</span></div>
+        <p class="anno">828 € l’anno · 72 notti-credito</p>
+        <ul>
+          <li><svg><use href="#check"/></svg> 6 notti-credito al mese</li>
+          <li><svg><use href="#check"/></svg> Trasporto da e verso casa incluso</li>
+          <li><svg><use href="#check"/></svg> Toelettatura una volta al mese</li>
+        </ul>
+        <span class="segno">Per chi viaggia per lavoro o ha più gatti</span>
+      </button>
+    </div>
+
+    <div class="riga-avanti">
+      <button class="btn btn-grande" id="avanti-piano" style="width:auto">Continua con il Plus</button>
+      <button class="indietro" data-vai="notte">Preferisco pagare a notte</button>
+    </div>
+
+    <p class="onesta">In alta stagione le notti-credito si sbloccano dal tredicesimo mese di
+      iscrizione. Nel primo anno agosto e Natale si pagano a listino, ma il posto è garantito
+      e prenoti novanta giorni prima di tutti gli altri.</p>
+
+    <div style="height:70px"></div>
+  </div>
+</main>
+
+<!-- ======================= VISTA 3 · MODULO ======================= -->
+<main class="vista modulo-sez" id="vista-modulo">
+  <div class="wrap">
+    <div class="intestazione-passo">
+      <button class="indietro" data-torna>Torna indietro</button>
+      <h2 style="margin-top:10px" id="modulo-titolo">Blocca il tuo posto</h2>
+      <p class="guida" id="modulo-guida"></p>
+    </div>
+
+    <div class="riepilogo" id="riepilogo">
+      <div>
+        <div class="voce">Piano scelto</div>
+        <div class="val" id="riepilogo-val">Plus — 39 € al mese</div>
+      </div>
+      <button type="button" id="cambia-piano">Cambia</button>
+    </div>
+
+    <form class="modulo" id="form" novalidate>
+      <div class="campo">
+        <label for="nome">Nome</label>
+        <input id="nome" name="nome" type="text" autocomplete="given-name" placeholder="Come ti chiami">
+      </div>
+      <div class="campo">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" placeholder="nome@esempio.it">
+      </div>
+      <div class="campo">
+        <label for="telefono">Telefono <span style="font-weight:400;opacity:.6">(facoltativo)</span></label>
+        <input id="telefono" name="telefono" type="tel" autocomplete="tel" placeholder="Per le cose urgenti">
+      </div>
+      <div class="campo">
+        <label for="comune">Da che zona arrivi</label>
+        <input id="comune" name="comune" type="text" placeholder="Comune o quartiere">
+      </div>
+      <div class="campo">
+        <label for="gatti">Quanti gatti</label>
+        <select id="gatti" name="gatti">
+          <option value="1">1 gatto</option>
+          <option value="2">2 gatti</option>
+          <option value="3+">3 o più</option>
+        </select>
+      </div>
+      <div class="campo" id="campo-quando">
+        <label for="quando">Quando ti servirebbe</label>
+        <input id="quando" name="quando" type="text" placeholder="Es. seconda settimana di agosto">
+      </div>
+      <div class="campo" id="campo-dove">
+        <label for="dove">Dove preferiresti</label>
+        <select id="dove" name="dove">
+          <option value="struttura">In struttura</option>
+          <option value="domicilio">A casa mia</option>
+          <option value="indeciso">Non so ancora</option>
+        </select>
+      </div>
+
+      <label class="privacy">
+        <input type="checkbox" id="consenso">
+        <span>Acconsento a essere ricontattato da Miciolandia. Non cediamo i dati a nessuno
+          e puoi chiedere la cancellazione quando vuoi.</span>
+      </label>
+
+      <p class="errore" id="errore" role="alert"></p>
+      <button class="btn btn-grande" type="submit" id="invia">Entra nei posti fondatori</button>
+    </form>
+    <div style="height:70px"></div>
+  </div>
+</main>
+
+<!-- ======================= VISTA 4 · CONFERMA ======================= -->
+<main class="vista" id="vista-fatto">
+  <div class="wrap conferma">
+    <div class="bollo"><svg><use href="#check"/></svg></div>
+    <h2 id="fatto-titolo">Il posto è tuo</h2>
+    <p id="fatto-testo"></p>
+    <div class="prossimo">
+      <h3>Cosa succede adesso</h3>
+      <ol id="fatto-passi"></ol>
+    </div>
+    <div class="riga-avanti">
+      <button class="btn btn-vuoto" id="fatto-home">Torna alla pagina</button>
+    </div>
+  </div>
+</main>
+
+<div class="mobile-cta">
+  <button class="btn btn-miele" data-vai="abbonamento">Scegli il piano</button>
+  <button class="btn" data-vai="notte">Prenota una notte</button>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* Dove finiscono i lead. Percorso relativo: la landing e' servita dallo
+     stesso sito Next (/landing-fase1.html). Vuoto = anteprima senza invio. */
+  var ENDPOINT = '/api/lead';
+
+  var PIANI = {
+    base:    { nome: 'Base',    quota: 19, anno: 228, crediti: 12 },
+    plus:    { nome: 'Plus',    quota: 39, anno: 468, crediti: 36 },
+    premium: { nome: 'Premium', quota: 69, anno: 828, crediti: 72 }
+  };
+
+  var CONSIGLI = {
+    '0-4':  { piano: null,      testo: 'Con meno di cinque notti l’anno l’abbonamento non si ripaga: ti conviene pagare a notte. Preferiamo dirtelo adesso.' },
+    '5-10': { piano: 'base',    testo: 'Con cinque o dieci notti il <strong>Base</strong> basta: paghi 228 € l’anno e il posto è garantito anche ad agosto.' },
+    '11-25':{ piano: 'plus',    testo: 'Con undici o venticinque notti il <strong>Plus</strong> è il più conveniente: 468 € l’anno contro i 520 € che spenderesti a listino.' },
+    '25+':  { piano: 'premium', testo: 'Sopra le venticinque notti il <strong>Premium</strong> si ripaga da solo, trasporto e toelettature comprese.' }
+  };
+
+  var stato = { percorso: 'abbonamento', piano: 'plus', banda: '11-25' };
+
+  /* ---------- tracciamento ---------- */
+  function traccia(evento, dati) {
+    try {
+      if (typeof window.gtag === 'function') window.gtag('event', evento, dati || {});
+      if (Array.isArray(window.dataLayer)) window.dataLayer.push(Object.assign({ event: evento }, dati || {}));
+      if (typeof window.fbq === 'function') window.fbq('trackCustom', evento, dati || {});
+    } catch (e) {}
+    try {
+      var c = JSON.parse(localStorage.getItem('miciolandia:conteggi') || '{}');
+      var k = evento + (dati && dati.percorso ? ':' + dati.percorso : '');
+      c[k] = (c[k] || 0) + 1;
+      localStorage.setItem('miciolandia:conteggi', JSON.stringify(c));
+    } catch (e) {}
+  }
+  window.miciolandiaConteggi = function () {
+    try { return JSON.parse(localStorage.getItem('miciolandia:conteggi') || '{}'); } catch (e) { return {}; }
+  };
+  window.miciolandiaLead = function () {
+    try { return JSON.parse(localStorage.getItem('miciolandia:lead') || '[]'); } catch (e) { return []; }
+  };
+
+  /* ---------- navigazione fra le viste ---------- */
+  var viste = { landing: 'vista-landing', piani: 'vista-piani', dati: 'vista-modulo', fatto: 'vista-fatto' };
+  var passiFlusso = document.getElementById('passi-flusso');
+  var barraCta = document.getElementById('barra-cta');
+  var passoTesto = document.getElementById('passo-testo');
+
+  function vai(nome, silenzioso) {
+    Object.keys(viste).forEach(function (k) {
+      document.getElementById(viste[k]).classList.toggle('attiva', k === nome);
+    });
+    document.body.classList.toggle('landing', nome === 'landing');
+    barraCta.hidden = nome !== 'landing';
+    passiFlusso.hidden = nome === 'landing';
+
+    var indice = nome === 'piani' ? 1 : nome === 'dati' ? 2 : nome === 'fatto' ? 3 : 0;
+    ['p1','p2','p3'].forEach(function (id, i) {
+      document.getElementById(id).classList.toggle('on', i < indice);
+    });
+    if (indice === 1) passoTesto.textContent = 'Passo 1 di 2 · il piano';
+    if (indice === 2) passoTesto.textContent = stato.percorso === 'abbonamento' ? 'Passo 2 di 2 · i tuoi dati' : 'I tuoi dati';
+    if (indice === 3) passoTesto.textContent = 'Fatto';
+
+    if (history.replaceState) history.replaceState(null, '', '#/' + nome);
+    window.scrollTo({ top: 0, behavior: silenzioso ? 'auto' : 'smooth' });
+    if (!silenzioso) traccia('vista_' + nome, { percorso: stato.percorso });
+  }
+
+  document.getElementById('home').addEventListener('click', function () { vai('landing'); });
+  document.getElementById('fatto-home').addEventListener('click', function () { location.reload(); });
+  Array.prototype.forEach.call(document.querySelectorAll('[data-torna]'), function (b) {
+    b.addEventListener('click', function () {
+      var qui = document.querySelector('.vista.attiva').id;
+      if (qui === 'vista-modulo' && stato.percorso === 'abbonamento') vai('piani');
+      else vai('landing');
+    });
+  });
+
+  /* ---------- le due porte ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll('[data-vai]'), function (b) {
+    b.addEventListener('click', function () {
+      var p = b.getAttribute('data-vai');
+      stato.percorso = p;
+      traccia('click_cta', {
+        percorso: p,
+        posizione: b.closest('.porta') ? 'hero'
+                 : b.closest('.mobile-cta') ? 'barra_mobile'
+                 : b.closest('.barra') ? 'intestazione' : 'pagina'
+      });
+      if (p === 'abbonamento') { vai('piani'); }
+      else { preparaModulo(); vai('dati'); }
+    });
+  });
+
+  /* ---------- schermata piani ---------- */
+  var consiglio = document.getElementById('consiglio');
+  var avanti = document.getElementById('avanti-piano');
+
+  function aggiornaPiani() {
+    Array.prototype.forEach.call(document.querySelectorAll('.piano'), function (el) {
+      el.setAttribute('aria-pressed', String(el.getAttribute('data-piano') === stato.piano));
+    });
+    avanti.textContent = 'Continua con il ' + PIANI[stato.piano].nome;
+  }
+
+  function aggiornaConsiglio() {
+    var c = CONSIGLI[stato.banda];
+    consiglio.innerHTML = c.testo;
+    if (c.piano) { stato.piano = c.piano; aggiornaPiani(); }
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-banda]'), function (b) {
+    b.addEventListener('click', function () {
+      Array.prototype.forEach.call(document.querySelectorAll('[data-banda]'), function (x) {
+        x.setAttribute('aria-pressed', String(x === b));
+      });
+      stato.banda = b.getAttribute('data-banda');
+      aggiornaConsiglio();
+      traccia('stima_notti', { banda: stato.banda });
+    });
+  });
+
+  Array.prototype.forEach.call(document.querySelectorAll('.piano'), function (el) {
+    el.addEventListener('click', function () {
+      stato.piano = el.getAttribute('data-piano');
+      aggiornaPiani();
+      traccia('scelta_piano', { piano: stato.piano });
+    });
+  });
+
+  avanti.addEventListener('click', function () {
+    stato.percorso = 'abbonamento';
+    preparaModulo();
+    vai('dati');
+  });
+
+  aggiornaConsiglio();
+  aggiornaPiani();
+
+  /* ---------- modulo ---------- */
+  var riepilogo = document.getElementById('riepilogo');
+  var campoQuando = document.getElementById('campo-quando');
+  var campoDove = document.getElementById('campo-dove');
+  var invia = document.getElementById('invia');
+  var errore = document.getElementById('errore');
+
+  function preparaModulo() {
+    var abb = stato.percorso === 'abbonamento';
+    document.getElementById('modulo-titolo').textContent = abb ? 'Blocca il tuo posto' : 'Chiedi le tue date';
+    document.getElementById('modulo-guida').textContent = abb
+      ? 'Non stiamo ancora incassando nulla: ti registriamo fra i posti fondatori e ti scriviamo appena apriamo le iscrizioni, con la tariffa bloccata per due anni.'
+      : 'Dicci quando ti servirebbe e da dove arrivi. Ti rispondiamo entro 24 ore, anche solo per farti vedere la struttura.';
+    riepilogo.style.display = abb ? 'flex' : 'none';
+    document.getElementById('riepilogo-val').textContent =
+      PIANI[stato.piano].nome + ' — ' + PIANI[stato.piano].quota + ' € al mese';
+    campoQuando.style.display = abb ? 'none' : 'flex';
+    campoDove.style.display = abb ? 'none' : 'flex';
+    invia.textContent = abb ? 'Entra nei posti fondatori' : 'Chiedi disponibilità';
+    errore.classList.remove('visibile');
+  }
+
+  document.getElementById('cambia-piano').addEventListener('click', function () { vai('piani'); });
+
+  document.getElementById('form').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    errore.classList.remove('visibile');
+
+    var nome = document.getElementById('nome').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var comune = document.getElementById('comune').value.trim();
+
+    if (!nome) return segnala('Scrivi il tuo nome, così sappiamo come chiamarti.', 'nome');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return segnala('Controlla l’indirizzo email: manca qualcosa.', 'email');
+    if (!comune) return segnala('Dicci da che zona arrivi: serve a capire dove aprire.', 'comune');
+    if (!document.getElementById('consenso').checked) return segnala('Spunta il consenso per poterti ricontattare.', 'consenso');
+
+    var abb = stato.percorso === 'abbonamento';
+    var dati = {
+      percorso: stato.percorso,
+      piano: abb ? stato.piano : null,
+      notti_previste: abb ? stato.banda : null,
+      nome: nome, email: email, comune: comune,
+      telefono: document.getElementById('telefono').value.trim() || null,
+      gatti: document.getElementById('gatti').value,
+      quando: abb ? null : document.getElementById('quando').value.trim(),
+      dove: abb ? null : document.getElementById('dove').value,
+      arrivo: document.referrer || 'diretto',
+      inviato_il: new Date().toISOString()
+    };
+
+    invia.disabled = true;
+    invia.textContent = 'Un attimo…';
+
+    function concludi() {
+      traccia('lead', { percorso: stato.percorso, piano: dati.piano, notti_previste: dati.notti_previste });
+      document.getElementById('fatto-titolo').textContent = abb ? 'Il posto è tuo' : 'Richiesta ricevuta';
+      document.getElementById('fatto-testo').textContent = abb
+        ? 'Sei fra i posti fondatori con il piano ' + PIANI[stato.piano].nome + '. Ti scriviamo a ' + email + ' e la tariffa di ' + PIANI[stato.piano].quota + ' € al mese resta bloccata per due anni.'
+        : 'Ti scriviamo a ' + email + ' entro 24 ore con la disponibilità per le date che ci hai indicato.';
+      var passi = abb
+        ? ['Ti arriva una mail di conferma, e basta: non ti iscriviamo a nessuna newsletter.',
+           'Quando apriamo le iscrizioni ti scriviamo per primo, prima di qualsiasi annuncio.',
+           'Puoi venire a vedere la struttura appena è pronta, senza impegno.']
+        : ['Controlliamo la disponibilità per le tue date.',
+           'Ti rispondiamo entro 24 ore con il prezzo esatto del soggiorno.',
+           'Se vuoi, fissiamo una visita prima che tu decida.'];
+      var ol = document.getElementById('fatto-passi');
+      ol.innerHTML = '';
+      passi.forEach(function (t) { var li = document.createElement('li'); li.textContent = t; ol.appendChild(li); });
+      vai('fatto');
+    }
+
+    if (ENDPOINT) {
+      fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(dati) })
+        .then(function (r) { if (!r.ok) throw new Error(r.status); concludi(); })
+        .catch(function () { segnala('L’invio non è andato a buon fine. Riprova fra un momento.', null); });
+    } else {
+      try {
+        var lista = JSON.parse(localStorage.getItem('miciolandia:lead') || '[]');
+        lista.push(dati);
+        localStorage.setItem('miciolandia:lead', JSON.stringify(lista));
+      } catch (e) {}
+      setTimeout(concludi, 350);
+    }
+  });
+
+  function segnala(messaggio, campo) {
+    errore.textContent = messaggio;
+    errore.classList.add('visibile');
+    if (campo) document.getElementById(campo).focus();
+    invia.disabled = false;
+    invia.textContent = stato.percorso === 'abbonamento' ? 'Entra nei posti fondatori' : 'Chiedi disponibilità';
+    return false;
+  }
+
+  /* ---------- avvio ---------- */
+  var iniziale = (location.hash || '').replace('#/', '');
+  if (viste[iniziale] && iniziale !== 'fatto') {
+    if (iniziale === 'dati') preparaModulo();
+    vai(iniziale, true);
+  } else {
+    vai('landing', true);
+  }
+  traccia('apertura_landing', {});
+})();
+</script>
+</body>
+</html>
