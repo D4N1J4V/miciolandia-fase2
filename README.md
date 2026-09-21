@@ -7,7 +7,7 @@ validato nelle prime tre fasi.
 
 Progetto Next.js + Supabase + Stripe, deploy su Vercel.
 
-**Demo online:** _incollare qui il link del deploy_
+**Demo online:** _https://miciolandia.vercel.app/_
 
 ---
 
