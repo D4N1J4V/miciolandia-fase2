@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import MenuUtente from '@/components/MenuUtente';
+import Tema from '@/components/Tema';
 
 export const metadata: Metadata = {
   title: 'Miciolandia — pensione per soli gatti a Bergamo',
@@ -19,6 +20,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap"
           rel="stylesheet"
         />
+        {/* Applica il tema scelto prima che la pagina si disegni,
+            altrimenti si vede un lampo del tema sbagliato. */}
+        <script dangerouslySetInnerHTML={{ __html:
+          "try{var t=localStorage.getItem('mcl:tema');" +
+          "if(t==='scuro'||t==='chiaro')document.documentElement.setAttribute('data-theme',t==='scuro'?'dark':'light')}catch(e){}" }} />
       </head>
       <body>
         <header className="barra">
@@ -36,6 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <a className="solo-desktop" href="/prezzi">Prezzi</a>
               <a className="solo-desktop" href="/faq">Domande</a>
               <MenuUtente />
+              <Tema />
               <a className="btn btn-miele" href="/prenota">Prenota</a>
             </nav>
           </div>
